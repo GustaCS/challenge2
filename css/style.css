@@ -55,20 +55,11 @@ body{
 }
 .cadastro{
     width: 48vw;
-    height: 80vh;
     margin: 0.5rem;
 }
 
 .cadastro_1{
     background-color: rgb(28, 27, 27);
-}
-
-.left{
-    flex: 2;
-}
-
-.right{
-    flex: 1;
 }
 .input-image{
     display: none;
