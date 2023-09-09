@@ -28,19 +28,27 @@ async function extrairTexto(img){
    var totalPagar = document.querySelector('#totalPagar')
    var dataVencimento = document.querySelector('#dataVencimento')
 
-   let regexNumero = /# (\d+)/
-   let resultNumeroRecibo = text.match(regexNumero)
+   let regexNum = /(Extrato)\s[0-9]*/
+   let resultNumeroRecibo = text.match(regexNum)
+   let regexTotal = /TOTAL [R$]* [0-9]*,[0-9]*/
+   let regexNome = /CUPOM FISCAL [\D]{16}/
   
    let dtVencimento = text.slice(93,106)
    let regexDtVencimento = /[\d]{2}[/][\d]{2}[/][\d]{4}/
    let dtVencimentoFinal = dtVencimento.match(regexDtVencimento)
+   let total = text.match(regexTotal)
+   let nome = text.match(regexNome)
 
-   numeroRecibo.value = resultNumeroRecibo[0]
-   nomeResponsavel.value = text.slice(18,35)
+   numeroRecibo.value = (resultNumeroRecibo[0]).slice(7,20)
+   nomeResponsavel.value = (nome[0])
    dataRecibo.value = text.slice(50,60)
    dataVencimento.value = dtVencimentoFinal
-   totalPagar.value = text.slice(190,198)
+   totalPagar.value = (total[0]).slice(5,30)
    await worker.terminate();
+
+   console.log(text)
+  console.log(dtVencimentoFinal)
+
 
 }
 
