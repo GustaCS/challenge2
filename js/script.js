@@ -26,30 +26,28 @@ async function extrairTexto(img){
    var nomeResponsavel = document.querySelector('#nomeResponsavel')
    var dataRecibo = document.querySelector('#dataRecibo')
    var totalPagar = document.querySelector('#totalPagar')
-   var dataVencimento = document.querySelector('#dataVencimento')
+   var horarioFiscal = document.querySelector('#horario')
 
    let regexNum = /(Extrato)\s[0-9]*/
-   let resultNumeroRecibo = text.match(regexNum)
    let regexTotal = /TOTAL [R$]* [0-9]*,[0-9]*/
    let regexNome = /CUPOM FISCAL [\D]{16}/
-  
-   let dtVencimento = text.slice(93,106)
-   let regexDtVencimento = /[\d]{2}[/][\d]{2}[/][\d]{4}/
-   let dtVencimentoFinal = dtVencimento.match(regexDtVencimento)
+   let regexHora = /[\d]{2}:[\d]{2}:[\d]{2}/
+   let regexDtVencimento = /\d{2}[/]\d{2}[/]\d{4}/
+   
+   let dtVencimento = text.match(regexDtVencimento)
    let total = text.match(regexTotal)
    let nome = text.match(regexNome)
-
+   let hora = text.match(regexHora)
+   let resultNumeroRecibo = text.match(regexNum)
+   
    numeroRecibo.value = (resultNumeroRecibo[0]).slice(7,20)
    nomeResponsavel.value = (nome[0])
-   dataRecibo.value = text.slice(50,60)
-   dataVencimento.value = dtVencimentoFinal
    totalPagar.value = (total[0]).slice(5,30)
+   dataRecibo.value =dtVencimento
+   horarioFiscal.value = hora
    await worker.terminate();
 
    console.log(text)
-  console.log(dtVencimentoFinal)
-
-
 }
 
 function preencherCampo(){

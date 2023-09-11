@@ -20,7 +20,7 @@ function cadastrar(){
     const numeroRecibo  = document.querySelector('#numeroRecibo').value
     const nomeResponsavel= document.querySelector('#nomeResponsavel').value
     const dataRecibo = document.querySelector("#dataRecibo").value
-    const dataVencimento = document.querySelector("#dataVencimento").value
+    const horario = document.querySelector("#horario").value
     const totalPagar = document.querySelector("#totalPagar").value
     
 
@@ -30,10 +30,10 @@ function cadastrar(){
         numeroRecibo,
         nomeResponsavel,
         dataRecibo,
-        dataVencimento,
+        horario,
         totalPagar
     }
-    if(numeroRecibo !=="" && nomeResponsavel !=="" && dataRecibo !=="" &&dataVencimento !=="" && totalPagar !==""){
+    if(numeroRecibo !=="" && nomeResponsavel !=="" && dataRecibo !=="" &&horario !=="" && totalPagar !==""){
     array_registro.push(base_consumos)
     atualizar()
     }
@@ -51,7 +51,7 @@ function createCard(base_consumos){
     <td>${base_consumos.numeroRecibo}</td>
     <td>${base_consumos.nomeResponsavel}</td>
     <td>${base_consumos.dataRecibo}</td>
-    <td>${base_consumos.dataVencimento}</td>
+    <td>${base_consumos.horario}</td>
     <td>${base_consumos.totalPagar}</td>
     <td>
       <button type="button" onClick ="apagar(${base_consumos.id})" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exclusao_modal">Excluir</button>
