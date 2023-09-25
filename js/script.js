@@ -3,6 +3,11 @@ let btnAdcImage = document.querySelector('.btnAdcImagens');
 let imagePreview = document.querySelector('.preview');
 let barraProgresso = document.querySelector('.barraProgresso');
 
+
+let funcionarios=localStorage.getItem("funcionario_Atual")
+let func_Atual = JSON.parse(funcionarios)
+
+console.log(func_Atual[0].nome)
 function controlarProgresso(n){
     barraProgresso.style.width = `${n}%`; 
 }
@@ -30,18 +35,18 @@ async function extrairTexto(img){
 
    let regexNum = /(Extrato)\s[0-9]*/
    let regexTotal = /TOTAL [R$]* [0-9]*,[0-9]*/
-   let regexNome = /CUPOM FISCAL [\D]{16}/
+   //let regexNome = /CUPOM FISCAL [\D]{16}/
    let regexHora = /[\d]{2}:[\d]{2}:[\d]{2}/
    let regexDtVencimento = /\d{2}[/]\d{2}[/]\d{4}/
    
    let dtVencimento = text.match(regexDtVencimento)
    let total = text.match(regexTotal)
-   let nome = text.match(regexNome)
+   //let nome = text.match(regexNome)
    let hora = text.match(regexHora)
    let resultNumeroRecibo = text.match(regexNum)
    
    numeroRecibo.value = (resultNumeroRecibo[0]).slice(7,20)
-   nomeResponsavel.value = (nome[0])
+   nomeResponsavel.value = func_Atual[0].nome
    totalPagar.value = (total[0]).slice(5,30)
    dataRecibo.value =dtVencimento
    horarioFiscal.value = hora
