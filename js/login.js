@@ -27,7 +27,7 @@ document.querySelector('#entrar').addEventListener('click',function(event){
         var comparacao = funcionarios_array[i]
         console.log(comparacao)
         if(comparacao.email === emailCadastro && comparacao.senha === senhaCadastro && comparacao.tipoFunc==="Supervisor"){
-            window.location.href=".../challenge2/pages/telaCadastroSupervisor.html"
+            window.location.href="/pages/telaCadastroSupervisor.html"
             funcionario_Atual.push(comparacao)
             atualizar()
         }
