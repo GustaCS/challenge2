@@ -26,14 +26,15 @@ document.querySelector('#entrar').addEventListener('click',function(event){
     for(var i=0; i<funcionarios_array.length;i++){
         var comparacao = funcionarios_array[i]
         console.log(comparacao)
-        if(comparacao.email === emailCadastro && comparacao.senha === senhaCadastro){
-            window.location.href="../pages/telaCadastro.html"
+        if(comparacao.email === emailCadastro && comparacao.senha === senhaCadastro && comparacao.tipoFunc==="Supervisor"){
+            window.location.href="../pages/telaCadastroSupervisor.html"
             funcionario_Atual.push(comparacao)
             atualizar()
         }
-        if(comparacao.tipoFunc==="comum"){
-            var campoConsulta =document.getElementById('tabela_consulta')
-            campoConsulta.style.display="none"
+        if(comparacao.email === emailCadastro && comparacao.senha === senhaCadastro && comparacao.tipoFunc==="Comum"){
+            window.location.href="../pages/telaCadastroComum.html"
+            funcionario_Atual.push(comparacao)
+            atualizar()
         }
     }
 })
