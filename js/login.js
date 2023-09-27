@@ -27,12 +27,12 @@ document.querySelector('#entrar').addEventListener('click',function(event){
         var comparacao = funcionarios_array[i]
         console.log(comparacao)
         if(comparacao.email === emailCadastro && comparacao.senha === senhaCadastro && comparacao.tipoFunc==="Supervisor"){
-            window.location.href="../pages/telaCadastroSupervisor.html"
+            window.location.href=".../challenge2/pages/telaCadastroSupervisor.html"
             funcionario_Atual.push(comparacao)
             atualizar()
         }
         if(comparacao.email === emailCadastro && comparacao.senha === senhaCadastro && comparacao.tipoFunc==="Comum"){
-            window.location.href="../pages/telaCadastroComum.html"
+            window.location.href=".../challenge2/pages/telaCadastroComum.html"
             funcionario_Atual.push(comparacao)
             atualizar()
         }
